@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000;
 const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
-
+k
 app.use(express.static(publicPath));
 
 io.on('connection', (socket) => {
@@ -25,7 +25,9 @@ io.on('connection', (socket) => {
     if (!isRealString(params.name) || !isRealString(params.room)) {
       callback('Name and room name are required');
     }
-    
+
+    socket.join(params.room);
+
     callback();
   });
 
